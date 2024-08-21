@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результаты</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+        }
+        .container {
+            padding: 20px;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .match {
+            background-color: #dff0d8;
+            border-color: #d0e9c6;
+        }
+        .mismatch {
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+    </style>
+    <linke rel='stylesheep' href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"></linke>
+</head>
+<body>
+    <header>
+        <h1>Результаты</h1>
+    </header>
+
+    <div class="container">
+        <div class="result {% if comparison_result %}match{% else %}mismatch{% endif %}">
+            <h2>Оригинальный текст</h2>
+            <p>{{ original_text }}</p>
+            <h2>Обработанный текст</h2>
+            <p>{{ processed_text }}</p>
+            {% if comparison_result %}
+                <p>Тексты совпадают!</p>
+            {% else %}
+                <p>Тексты не совпадают.</p>
+            {% endif %}
+        </div>
+        <a href="{% url 'submit_text' %}">Вернуться</a>
+    </div>
+</body>
+</html>
+
+
